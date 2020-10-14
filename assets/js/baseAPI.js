@@ -4,4 +4,16 @@
 $.ajaxPrefilter(function (options) {
   options.url = 'http://ajax.frontend.itheima.net' + options.url;
   console.log(options.url);
+  if (options.url.indexOf('/my/') !== -1) {
+    options.headers = { Authorization: localStorage.getItem('token') || '' }
+  }
+  //不论成功还是失败,最终都会执行complete回调函数
+  options.complete = function (res2) {
+    console.log(res2);
+    console.log(res2.responseJSON);
+    if (res2.responseJSON.status === 1 & res2.responseJSON.message == '身份认证失败！') {
+      localStorage.removeItem('token');
+      location.href = '/login.html'
+    }
+  }
 })

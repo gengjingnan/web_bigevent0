@@ -25,6 +25,7 @@ $(function () {
   //注册页面表单提交事件
   $('#form_reg').on('submit', function (e) {
     e.preventDefault()
+    console.log(1);
     var data = {
       username: $('#form_reg [name=username]').val(), password: $('#form_reg [name=password]').val()
     };
@@ -35,7 +36,7 @@ $(function () {
         return layer.msg(res.message)
       }
       layer.msg('注册成功,请登录!');
-      $('#link_login').click()
+      // $('#link_login').click()
     })
   })
   //登录页面表单提交
