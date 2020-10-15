@@ -1,10 +1,6 @@
 $(function () {
   var layer = layui.layer;
   getUserInfo()
-
-
-
-
   $('.icon-tuichu').on('click', function () {
     layer.confirm('确认是否退出?', { icon: 3, title: '提示' }, function (index) {
       localStorage.removeItem('token');
